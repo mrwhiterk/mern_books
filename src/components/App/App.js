@@ -15,6 +15,7 @@ class App extends Component {
       books: []
     }
     this.addBook = this.addBook.bind(this)
+    this.getBooks = this.getBooks.bind(this)
   }
 
   addBook(newBook) {
@@ -23,7 +24,7 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
+  getBooks() {
     axios.get('http://localhost:3001/api/books')
       .then((res) => {
         this.setState({
@@ -34,6 +35,12 @@ class App extends Component {
         console.log(err)
       })
   }
+
+  componentDidMount() {
+    this.getBooks()
+  }
+
+
 
   render() {
     return (
@@ -49,7 +56,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route path="/" exact render={() => <Books books={this.state.books} />} />
-            <Route path="/book/:title" render={(props) => <Book {...props} books={this.state.books} />} />
+            <Route path="/book/:title" render={(props) => <Book {...props} books={this.state.books} getBooks={this.getBooks} />} />
             <Route path="/new" render={(props) => <AddBook addBook={this.addBook} {...props} />} />
           </Switch>
         </main>
