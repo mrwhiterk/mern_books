@@ -6,6 +6,7 @@ import Books from '../Books/Books';
 import Book from '../Book/Book';
 import axios from 'axios'
 import AddBook from '../AddBook/AddBook';
+import EditBook from '../EditBook/EditBook';
 
 class App extends Component {
   constructor(props) {
@@ -40,8 +41,6 @@ class App extends Component {
     this.getBooks()
   }
 
-
-
   render() {
     return (
       <div className="App">
@@ -58,6 +57,7 @@ class App extends Component {
             <Route path="/" exact render={() => <Books books={this.state.books} />} />
             <Route path="/book/:title" render={(props) => <Book {...props} books={this.state.books} getBooks={this.getBooks} />} />
             <Route path="/new" render={(props) => <AddBook addBook={this.addBook} {...props} />} />
+            <Route path="/edit/:id" render={(props) => <EditBook {...props} getBooks={this.getBooks} books={this.state.books} />} />
           </Switch>
         </main>
       </div>

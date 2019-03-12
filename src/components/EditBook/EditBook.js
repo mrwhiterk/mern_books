@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-import './AddBook.css'
+import './EditBook.css'
 import axios from 'axios';
 
 export default class EditBook extends Component {
   constructor(props) {
     super(props);
+
+    this.item = this.props.books.find(book => book._id === this.props.match.params.id) || {}
+    console.log(this.item)
     this.state = {
-      title: "",
-      Author: "",
-      text: ""
+      title: this.item.title || "",
+      Author: this.item.Author || "",
+      text: this.item.text || ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,21 +23,22 @@ export default class EditBook extends Component {
     })
   }
 
-  getBooks() {
-    axios.get('http://localhost:3001/api/books')
-      .then((res) => {
-        this.setState({
-          books: res.data
-        })
+  updateBooks() {
+    console.log(this.props)
+
+    axios.put('http://localhost:3001/api/books/' + this.item._id, this.state)
+      .then(function (response) {
+        console.log(response.data);
+      }).finally(() => {
+        this.props.getBooks()
       })
-      .catch((err) => {
-        console.log(err)
-      })
+
   }
 
   handleSubmit(event) {
-    // this.props.addBook(this.state);
     event.preventDefault();
+    console.log(this.state)
+    this.updateBooks()
     this.props.history.push("/")
   }
 
@@ -50,7 +54,7 @@ export default class EditBook extends Component {
         <p>
           <label>
             Author<br />
-            <input type="text" name="Author" onChange={this.handleChange} value={this.state.author} />
+            <input type="text" name="Author" onChange={this.handleChange} value={this.state.Author} />
           </label>
         </p>
         <p>

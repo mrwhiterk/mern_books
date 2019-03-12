@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 import './Book.css';
 
 class Book extends Component {
@@ -14,6 +15,8 @@ class Book extends Component {
   }
 
   delete() {
+
+
     axios.delete('http://localhost:3001/api/books/' + this.book._id)
       .then((res) => {
         console.log(res.data)
@@ -34,8 +37,8 @@ class Book extends Component {
         <p>{this.book.Author}</p>
         <h3>Excerpt</h3>
         <p>{this.book.text}</p>
-        <p>{this.book.id}</p>
         <button onClick={this.delete}>Delete</button>
+        <Link to={"/edit/" + this.book._id}>Edit</Link>
       </div>
     )
   }
