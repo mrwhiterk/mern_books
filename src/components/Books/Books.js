@@ -6,9 +6,12 @@ class Books extends Component {
   render() {
     return (
       <div>
-        {this.props.books.map(item =>
-          <div>
-            <Link to={"/book/" + item.title}>{item.title}</Link>
+        {this.props.books.map((item, i) =>
+          <div key={i}>
+            <Link to={"/book/" + item.title}>
+              <h3>{item.title}</h3>
+              {item.Author}
+            </Link>
           </div>
         )}
       </div>

@@ -3,14 +3,28 @@ import { Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
 import Books from '../Books/Books';
+import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      books: [{ title: 'blah' }, { title: 'que' }]
+      books: []
     }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/api/books')
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          books: res.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   render() {
@@ -18,7 +32,7 @@ class App extends Component {
       <div className="App">
         <nav>
           <Link to="/">
-            <h1>Welcome to my Library</h1>
+            <h1>Library</h1>
           </Link>
           <Link to="/books">View all books</Link>
         </nav>
