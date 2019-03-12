@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './AddBook.css'
 import axios from 'axios';
 
-export default class AddBook extends Component {
+export default class EditBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,20 +20,20 @@ export default class AddBook extends Component {
     })
   }
 
-  handleSubmit(event) {
-    this.props.addBook(this.state);
-    axios.post('http://localhost:3001/api/books', {
-      title: this.state.title,
-      Author: this.state.Author,
-      text: this.state.text
-    })
-      .then(function (response) {
-        console.log(response);
+  getBooks() {
+    axios.get('http://localhost:3001/api/books')
+      .then((res) => {
+        this.setState({
+          books: res.data
+        })
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
+  handleSubmit(event) {
+    // this.props.addBook(this.state);
     event.preventDefault();
     this.props.history.push("/")
   }
