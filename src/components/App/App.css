@@ -11,9 +11,7 @@ body {
 nav {
   background: black;
   color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   padding: 0 20px;
 }
 
@@ -31,7 +29,7 @@ nav h1 {
 }
 
 a {
-  color: teal;
+  color: rgb(255, 255, 255);
   display: inline-block;
   padding: 20px;
   font-size: 1.2em;

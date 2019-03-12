@@ -9,8 +9,10 @@ class Books extends Component {
         {this.props.books.map((item, i) =>
           <div key={i}>
             <Link to={"/book/" + item.title}>
-              <h3>{item.title}</h3>
-              {item.Author}
+              <div className="container">
+                <h3>{item.title}</h3>
+                <p>{item.Author}</p>
+              </div>
             </Link>
           </div>
         )}

@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import './App.css';
 
 import Books from '../Books/Books';
+import Book from '../Book/Book';
 import axios from 'axios'
 
 class App extends Component {
@@ -17,7 +18,6 @@ class App extends Component {
   componentDidMount() {
     axios.get('http://localhost:3001/api/books')
       .then((res) => {
-        console.log(res)
         this.setState({
           books: res.data
         })
@@ -34,11 +34,11 @@ class App extends Component {
           <Link to="/">
             <h1>Library</h1>
           </Link>
-          <Link to="/books">View all books</Link>
         </nav>
         <main>
           <Switch>
             <Route path="/" exact render={() => <Books books={this.state.books} />} />
+            <Route path="/book/:title" render={(props) => <Book {...props} books={this.state.books} />} />
           </Switch>
         </main>
       </div>
