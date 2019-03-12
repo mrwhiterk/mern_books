@@ -22,9 +22,10 @@ export default class AddBook extends Component {
 
   handleSubmit(event) {
     this.props.addBook(this.state);
+    console.log(this.state.Author)
     axios.post('http://localhost:3001/api/books', {
       title: this.state.title,
-      Author: this.state.Author,
+      author: this.state.Author,
       text: this.state.text
     })
       .then(function (response) {
