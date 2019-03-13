@@ -7,16 +7,27 @@ export default class EditBook extends Component {
   constructor(props) {
     super(props);
 
-    this.item = this.props.books.find(book => book._id === this.props.match.params.id) || {}
 
     this.state = {
-      title: this.item.title || "",
-      author: this.item.author || "",
-      text: this.item.text || ""
+      title: "",
+      author: "",
+      text: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(serverUrl + '/api/books/' + this.props.match.params.id)
+      .then((res) => {
+        this.setState({
+          ...res.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   handleChange(event) {
@@ -26,7 +37,7 @@ export default class EditBook extends Component {
   }
 
   updateBooks() {
-    axios.put(serverUrl + '/api/books/' + this.item._id, this.state)
+    axios.put(serverUrl + '/api/books/' + this.state._id, this.state)
       .then(function (response) {
         console.log(response.data);
       }).finally(() => {
