@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Book.css';
 
 class Book extends Component {
@@ -15,14 +15,12 @@ class Book extends Component {
   }
 
   delete() {
-
-
     axios.delete('http://localhost:3001/api/books/' + this.book._id)
       .then((res) => {
         console.log(res.data)
-        this.props.history.push('/')
-      }).finally(() => {
+      }).then(() => {
         this.props.getBooks()
+        this.props.history.push('/')
       })
   }
 

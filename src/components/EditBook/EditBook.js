@@ -7,7 +7,6 @@ export default class EditBook extends Component {
     super(props);
 
     this.item = this.props.books.find(book => book._id === this.props.match.params.id) || {}
-    console.log(this.item)
     this.state = {
       title: this.item.title || "",
       Author: this.item.Author || "",
@@ -24,15 +23,12 @@ export default class EditBook extends Component {
   }
 
   updateBooks() {
-    console.log(this.props)
-
     axios.put('http://localhost:3001/api/books/' + this.item._id, this.state)
       .then(function (response) {
         console.log(response.data);
       }).finally(() => {
         this.props.getBooks()
       })
-
   }
 
   handleSubmit(event) {

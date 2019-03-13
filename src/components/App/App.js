@@ -54,10 +54,17 @@ class App extends Component {
         </nav>
         <main>
           <Switch>
-            <Route path="/" exact render={() => <Books books={this.state.books} />} />
-            <Route path="/book/:title" render={(props) => <Book {...props} books={this.state.books} getBooks={this.getBooks} />} />
-            <Route path="/new" render={(props) => <AddBook addBook={this.addBook} {...props} />} />
-            <Route path="/edit/:id" render={(props) => <EditBook {...props} getBooks={this.getBooks} books={this.state.books} />} />
+            <Route path="/" exact render={(props) =>
+              <Books books={this.state.books} {...props} />} />
+
+            <Route path="/book/:title" render={(props) =>
+              <Book {...props} books={this.state.books} getBooks={this.getBooks} />} />
+
+            <Route path="/new" render={(props) =>
+              <AddBook addBook={this.addBook} {...props} />} />
+
+            <Route path="/edit/:id" render={(props) =>
+              <EditBook {...props} getBooks={this.getBooks} books={this.state.books} />} />
           </Switch>
         </main>
       </div>
