@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './EditBook.css'
 import axios from 'axios';
+import serverUrl from '../constants';
 
 export default class EditBook extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class EditBook extends Component {
   }
 
   updateBooks() {
-    axios.put('http://localhost:3001/api/books/' + this.item._id, this.state)
+    axios.put(serverUrl + '/api/books/' + this.item._id, this.state)
       .then(function (response) {
         console.log(response.data);
       }).finally(() => {
@@ -33,7 +34,6 @@ export default class EditBook extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state)
     this.updateBooks()
     this.props.history.push("/")
   }
@@ -56,10 +56,12 @@ export default class EditBook extends Component {
         <p>
           <label>
             Excerpt<br />
-            <textarea cols="130" rows="40" type="text" name="text" value={this.state.text} onChange={this.handleChange} />
+            <textarea cols="130" rows="25" type="text" name="text" value={this.state.text} onChange={this.handleChange} />
           </label>
         </p>
-        <input type="submit" value="Submit" />
+        <p>
+          <input type="submit" value="Submit" />
+        </p>
       </form>
     )
   }

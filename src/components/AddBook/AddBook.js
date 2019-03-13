@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './AddBook.css'
 import axios from 'axios';
+import serverUrl from '../constants';
 
 export default class AddBook extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ export default class AddBook extends Component {
   handleSubmit(event) {
     this.props.addBook(this.state);
     console.log(this.state.Author)
-    axios.post('http://localhost:3001/api/books', {
+
+    axios.post(serverUrl + '/api/books', {
       title: this.state.title,
       author: this.state.Author,
       text: this.state.text
@@ -57,10 +59,12 @@ export default class AddBook extends Component {
         <p>
           <label>
             Excerpt<br />
-            <textarea cols="130" rows="40" type="text" name="text" value={this.state.text} onChange={this.handleChange} />
+            <textarea cols="130" rows="25" type="text" name="text" value={this.state.text} onChange={this.handleChange} />
           </label>
         </p>
-        <input type="submit" value="Submit" />
+        <p>
+          <input type="submit" value="Submit" />
+        </p>
       </form>
     )
   }

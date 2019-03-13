@@ -7,6 +7,8 @@ import Book from '../Book/Book';
 import axios from 'axios'
 import AddBook from '../AddBook/AddBook';
 import EditBook from '../EditBook/EditBook';
+import serverUrl from '../constants';
+
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class App extends Component {
   }
 
   getBooks() {
-    axios.get('http://localhost:3001/api/books')
+    axios.get(serverUrl + '/api/books')
       .then((res) => {
         this.setState({
           books: res.data
