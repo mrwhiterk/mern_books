@@ -63,7 +63,7 @@ class App extends Component {
               <Book {...props} books={this.state.books} getBooks={this.getBooks} />} />
 
             <Route path="/new" render={(props) =>
-              <AddBook addBook={this.addBook} {...props} />} />
+              <AddBook getBooks={this.getBooks} addBook={this.addBook} {...props} />} />
 
             <Route path="/edit/:id" render={(props) =>
               <EditBook {...props} getBooks={this.getBooks} books={this.state.books} />} />

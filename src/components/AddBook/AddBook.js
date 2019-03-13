@@ -35,7 +35,8 @@ export default class AddBook extends Component {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      }).finally(_ => this.props.getBooks())
+
 
     event.preventDefault();
     this.props.history.push("/")
