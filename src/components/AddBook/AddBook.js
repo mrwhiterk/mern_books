@@ -8,7 +8,7 @@ export default class AddBook extends Component {
     super(props);
     this.state = {
       title: "",
-      Author: "",
+      author: "",
       text: ""
     }
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +27,7 @@ export default class AddBook extends Component {
 
     axios.post(serverUrl + '/api/books', {
       title: this.state.title,
-      author: this.state.Author,
+      author: this.state.author,
       text: this.state.text
     })
       .then(function (response) {
@@ -53,7 +53,7 @@ export default class AddBook extends Component {
         <p>
           <label>
             Author<br />
-            <input type="text" name="Author" onChange={this.handleChange} value={this.state.author} />
+            <input type="text" name="author" onChange={this.handleChange} value={this.state.author} />
           </label>
         </p>
         <p>

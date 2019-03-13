@@ -11,7 +11,7 @@ class Books extends Component {
             <Link to={"/book/" + item.title}>
               <div className="container">
                 <h3>{item.title}</h3>
-                <p>{item.Author}</p>
+                <p>{item.author}</p>
               </div>
             </Link>
           </div>

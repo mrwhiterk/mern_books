@@ -34,7 +34,7 @@ class Book extends Component {
         <h3>Title</h3>
         <p>{this.book.title}</p>
         <h3>Author</h3>
-        <p>{this.book.Author}</p>
+        <p>{this.book.author}</p>
         <h3>Excerpt</h3>
         <p>{this.book.text}</p>
         <div>

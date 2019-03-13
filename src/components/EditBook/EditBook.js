@@ -8,11 +8,13 @@ export default class EditBook extends Component {
     super(props);
 
     this.item = this.props.books.find(book => book._id === this.props.match.params.id) || {}
+
     this.state = {
       title: this.item.title || "",
-      Author: this.item.Author || "",
+      author: this.item.author || "",
       text: this.item.text || ""
     }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,7 +52,7 @@ export default class EditBook extends Component {
         <p>
           <label>
             Author<br />
-            <input type="text" name="Author" onChange={this.handleChange} value={this.state.Author} />
+            <input type="text" name="author" onChange={this.handleChange} value={this.state.author} />
           </label>
         </p>
         <p>
