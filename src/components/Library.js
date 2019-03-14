@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import serverUrl from './constants'
 
 class Library extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      libraryItems: [
-        'book 1',
-        'book 2',
-        'book 3'
-      ]
+      libraryItems: []
     }
   }
 
+  componentDidMount() {
+    axios.get(serverUrl + '/api/books')
+      .then((res) => {
+        this.setState({
+          libraryItems: res.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   render() {
-    const libraryItems = this.state.libraryItems.map((item, id) => {
+    const libraryItems = this.state.libraryItems && this.state.libraryItems.map((item, id) => {
       return (
-        <li key={id}>
-          {item}
-          <button onClick={() => this.props.addItem(item)}>+</button>
+        <li key={id} onClick={() => this.props.addItem(item.title)}>
+          {item.title}
         </li>
       )
     })

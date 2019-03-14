@@ -14,7 +14,6 @@ class BookContainer extends Component {
 
 
   render() {
-    console.log(this.props.book)
     const BookItems = this.props.book.map((book, id) => {
       return (
         <li key={id}>
@@ -25,7 +24,7 @@ class BookContainer extends Component {
     return (
       <div>
         <Library addItem={this.props.actions.addToBooks} />
-        <h2>Books</h2>
+        <h2>my Books</h2>
         <ol>
           {BookItems}
         </ol>
