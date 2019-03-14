@@ -9,6 +9,8 @@ import AddBook from '../AddBook/AddBook';
 import EditBook from '../EditBook/EditBook';
 import serverUrl from '../constants';
 
+import BookContainer from '../../containers/BookContainer'
+
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +57,7 @@ class App extends Component {
           </Link>
         </nav>
         <main>
+          <BookContainer />
           <Switch>
             <Route path="/" exact render={(props) =>
               <Books books={this.state.books} {...props} />} />
