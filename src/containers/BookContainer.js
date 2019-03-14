@@ -24,10 +24,9 @@ class BookContainer extends Component {
     return (
       <div>
         <Library addItem={this.props.actions.addToBooks} />
-        <h2>my Books</h2>
-        <ol>
+        <ul>
           {BookItems}
-        </ol>
+        </ul>
       </div>
     )
   }

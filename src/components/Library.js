@@ -8,6 +8,8 @@ class Library extends Component {
     this.state = {
       libraryItems: []
     }
+
+    this.getAllBooks = this.getAllBooks.bind(this)
   }
 
   componentDidMount() {
@@ -15,26 +17,22 @@ class Library extends Component {
       .then((res) => {
         this.setState({
           libraryItems: res.data
-        })
+        }, () => this.getAllBooks())
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
+  getAllBooks() {
+    const libraryItems = this.state.libraryItems && this.state.libraryItems.map((item, id) =>
+      this.props.addItem(item.title)
+    )
+  }
+
   render() {
-    const libraryItems = this.state.libraryItems && this.state.libraryItems.map((item, id) => {
-      return (
-        <li key={id} onClick={() => this.props.addItem(item.title)}>
-          {item.title}
-        </li>
-      )
-    })
     return (
-      <div>
-        <h2>Library</h2>
-        <ul>{libraryItems}</ul>
-      </div>
+      <div></div>
     )
   }
 }
