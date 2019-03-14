@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import * as BookActions from '../actions/BookActions'
 import Library from '../components/Library.js'
 
+import '../stylesheets/BookContainer.css';
+
 class BookContainer extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +19,9 @@ class BookContainer extends Component {
     const BookItems = this.props.book.map((book, id) => {
       return (
         <li key={id}>
-          {book}
+          <p>{book.title}</p>
+          {/* <p>Author: {book.author}</p>
+          <p>Text: {book.text}</p> */}
         </li>
       )
     })

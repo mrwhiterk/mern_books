@@ -25,8 +25,8 @@ class Library extends Component {
   }
 
   getAllBooks() {
-    const libraryItems = this.state.libraryItems && this.state.libraryItems.map((item, id) =>
-      this.props.addItem(item.title)
+    this.state.libraryItems && this.state.libraryItems.map((item, id) =>
+      this.props.addItem(item)
     )
   }
 

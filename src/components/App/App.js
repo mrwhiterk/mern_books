@@ -58,7 +58,7 @@ class App extends Component {
         </nav>
         <main>
           <BookContainer />
-          {console.log('props from app', this.props)}
+
           <Switch>
             <Route path="/" exact render={(props) =>
               <Books books={this.state.books} {...props} />} />
