@@ -39,7 +39,7 @@ export default class EditBook extends Component {
   updateBooks() {
     axios.put(serverUrl + '/api/books/' + this.state._id, this.state)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
       }).finally(() => {
         this.props.getBooks()
       })
@@ -54,27 +54,19 @@ export default class EditBook extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>
-          <label>
-            Title<br />
-            <input type="text" name="title" onChange={this.handleChange} value={this.state.title} />
-          </label>
-        </p>
-        <p>
-          <label>
-            Author<br />
-            <input type="text" name="author" onChange={this.handleChange} value={this.state.author} />
-          </label>
-        </p>
-        <p>
-          <label>
-            Excerpt<br />
-            <textarea cols="130" rows="25" type="text" name="text" value={this.state.text} onChange={this.handleChange} />
-          </label>
-        </p>
-        <p>
-          <input type="submit" value="Submit" />
-        </p>
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <input type="text" name="title" className="form-control" onChange={this.handleChange} value={this.state.title} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="author">Author</label>
+          <input type="text" name="author" className="form-control" onChange={this.handleChange} value={this.state.author} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="text">Excerpt</label>
+          <textarea rows="5" type="text" className="form-control" name="text" value={this.state.text} onChange={this.handleChange} />
+        </div>
+        <input type="submit" className="btn btn-success" value="Submit" />
       </form>
     )
   }

@@ -5,3 +5,7 @@
   color: white;
   background-color: rgb(0, 174, 255);
 }
+
+a {
+  color: inherit !important;
+}

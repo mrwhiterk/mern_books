@@ -5,14 +5,12 @@ import { Link } from "react-router-dom";
 class Books extends Component {
   render() {
     return (
-      <div>
+      <div className="row">
         {this.props.books.map((item, i) =>
-          <div key={i}>
+          <div key={i} className="container col-5 offset-1">
             <Link to={"/book/" + item.title}>
-              <div className="container">
-                <h3>{item.title}</h3>
-                <p>{item.author}</p>
-              </div>
+              <h3>{item.title}</h3>
+              <p>{item.author}</p>
             </Link>
           </div>
         )}

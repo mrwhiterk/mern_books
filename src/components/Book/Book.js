@@ -38,8 +38,8 @@ class Book extends Component {
         <h3>Excerpt</h3>
         <p>{this.book.text}</p>
         <div>
-          <button onClick={this.delete}>Delete</button>
-          <Link to={"/edit/" + this.book._id}><button>Edit</button></Link>
+          <button onClick={this.delete} className="btn btn-danger">Delete</button>
+          <Link to={"/edit/" + this.book._id}><button className="btn btn-dark">Edit</button></Link>
 
         </div>
       </div>
